@@ -27,9 +27,11 @@ class  ListViewItem extends Component {
     return(
       <View>
         <Text>{this.props.dataSource.iconName}</Text>
-        <Image source = {this.props.dataSource.imageOneUrl} style={styles.image} />
-        <Image source = {this.props.dataSource.imageTwoUrl} style={styles.image} />
-        <Image source = {this.props.dataSource.imageThreeUrl} style={styles.image} />
+        <View style={styles.container}>
+          <Image source = {this.props.dataSource.imageOneUrl} style={styles.image} />
+          <Image source = {this.props.dataSource.imageTwoUrl} style={styles.image} />
+          <Image source = {this.props.dataSource.imageThreeUrl} style={styles.image} />
+        </View>
         <TouchableHighlight onPress={() => this._onPressImage(this.state.count)}>
           <Image source = {this.props.dataSource.imageFourUrl} style={styles.image} />
         </TouchableHighlight>
@@ -46,11 +48,14 @@ class  ListViewItem extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+  },
   image: {
-    width: 320,
-    height: 200,
-    resizeMode: 'cover',
-  }
+    width: 100,
+    height: 100,
+  },
 });
 
 module.exports = ListViewItem
