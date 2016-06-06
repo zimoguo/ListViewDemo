@@ -7,8 +7,6 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-import Model from './Model';
-
 class  ListViewItem extends Component {
 
   props: {
