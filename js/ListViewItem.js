@@ -5,11 +5,15 @@ import {
   Image,
   View,
   TouchableHighlight,
+  Navigator,
 } from 'react-native';
+
+import Detail from './Detail.js'
 
 class  ListViewItem extends Component {
 
   props: {
+    navigator: Navigator,
     dataSource: any,
   }
 
@@ -25,19 +29,31 @@ class  ListViewItem extends Component {
 
   render(){
     return(
-      <View>
-        <Text>{this.props.dataSource.iconName}</Text>
-        <View style={styles.container}>
-          <Image source = {this.props.dataSource.imageOneUrl} style={styles.image} />
-          <Image source = {this.props.dataSource.imageTwoUrl} style={styles.image} />
-          <Image source = {this.props.dataSource.imageThreeUrl} style={styles.image} />
+      <TouchableHighlight onPress={() => this._onPressItem('Detail',Detail)}>
+        <View>
+          <Text>{this.props.dataSource.iconName}</Text>
+          <View style={styles.container}>
+            <Image source = {this.props.dataSource.imageOneUrl} style={styles.image} />
+            <Image source = {this.props.dataSource.imageTwoUrl} style={styles.image} />
+            <Image source = {this.props.dataSource.imageThreeUrl} style={styles.image} />
+          </View>
+          <TouchableHighlight onPress={() => this._onPressImage(this.state.count)}>
+            <Image source = {this.props.dataSource.imageFourUrl} style={styles.image} />
+          </TouchableHighlight>
+          <Text>{this.state.count}</Text>
         </View>
-        <TouchableHighlight onPress={() => this._onPressImage(this.state.count)}>
-          <Image source = {this.props.dataSource.imageFourUrl} style={styles.image} />
-        </TouchableHighlight>
-        <Text>{this.state.count}</Text>
-      </View>
+      </TouchableHighlight>
     );
+  }
+
+  _onPressItem(name, component){
+    this.props.navigator.push({
+      name: name,
+      component: component,
+      params: {
+        dataSource: this.props.dataSource,
+      }
+    });
   }
 
   _onPressImage(count) {

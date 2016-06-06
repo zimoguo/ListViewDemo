@@ -41,7 +41,7 @@ class Index extends Component{
   _renderRow(rowData){
     return(
       <View>
-        <ListViewItem dataSource = {rowData}/>
+        <ListViewItem dataSource = {rowData} navigator = {this.props.navigator}/>
       </View>
     );
   }

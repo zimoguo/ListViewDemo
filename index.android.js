@@ -8,6 +8,6 @@ import {
   AppRegistry,
 } from 'react-native';
 
-import Index from './js/index'
+import App from './js/App.js'
 
-AppRegistry.registerComponent('ListViewDemo', () => Index);
+AppRegistry.registerComponent('ListViewDemo', () => App);
