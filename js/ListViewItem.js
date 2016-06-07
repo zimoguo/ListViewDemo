@@ -10,6 +10,10 @@ import {
 
 import Detail from './Detail.js'
 
+import Dimensions from 'Dimensions'
+
+const width = Dimensions.get('window').width;
+
 class  ListViewItem extends Component {
 
   props: {
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   image: {
-    width: 100,
+    width: width/3,
     height: 100,
   },
 });
